@@ -29,14 +29,14 @@ describe "Light Modal box plugin", ->
       expect($("#modal_1")).toBeHidden()
       expect($("#modal_2")).toBeHidden()
     
-    it "should add a 'modal' class to the modal box", ->
-      expect($("#modal_1")).toHaveClass "modal"
-      expect($("#modal_2")).toHaveClass "modal"
+    it "should add a 'lm-modal' class to the modal box", ->
+      expect($("#modal_1")).toHaveClass "lm-modal"
+      expect($("#modal_2")).toHaveClass "lm-modal"
 
   describe "Showing", ->
     beforeEach ->
       $("#modal_trigger_1").lightModal 'show'
-      $('.modal').stop()
+      $('.lm-modal').stop()
 
     afterEach ->
       $("#modal_trigger_1").lightModal 'hide'
@@ -46,8 +46,8 @@ describe "Light Modal box plugin", ->
       expect($("#modal_2")).toBeHidden()
     
     it "should have an overlay", ->
-      expect($(".light-modal-overlay")).toBeVisible()
-      expect($(".light-modal-overlay").size()).toEqual(1)
+      expect($(".lm-overlay")).toBeVisible()
+      expect($(".lm-overlay").size()).toEqual(1)
 
     it "should execute the onShow function", ->
       $("#modal_trigger_2").lightModal 'show'
@@ -60,7 +60,7 @@ describe "Light Modal box plugin", ->
       $("#modal_trigger_1").lightModal 'hide'
       $("#modal_trigger_2").lightModal 'show'
       $("#modal_trigger_2").lightModal 'hide'
-      $('.modal').stop()
+      $('.lm-modal').stop()
 
     it "should hide the modal", ->
       waits 500
@@ -68,15 +68,15 @@ describe "Light Modal box plugin", ->
         expect($("#modal_1")).toBeHidden()
     
     it "should hide the overlay", ->
-      expect($(".light-modal-overlay").size()).toEqual(0)
+      expect($(".lm-overlay").size()).toEqual(0)
 
     it "should execute the onHide function", ->
       expect($('#modal2_status').text()).toEqual('hidden')
 
     # it "should hide the modal and overlay when the overlay is clicked", ->
     #   $("#modal_trigger_1").lightModal 'show'
-    #   $(".light-modal-overlay").click()
+    #   $(".lm-overlay").click()
     #   waits 500
     #   runs ->
     #     expect($("#modal_1")).toBeHidden()
-    #     expect($(".light-modal-overlay").size()).toEqual(0)
+    #     expect($(".lm-overlay").size()).toEqual(0)

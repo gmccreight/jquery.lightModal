@@ -33,15 +33,15 @@
         expect($("#modal_1")).toBeHidden();
         return expect($("#modal_2")).toBeHidden();
       });
-      return it("should add a 'modal' class to the modal box", function() {
-        expect($("#modal_1")).toHaveClass("modal");
-        return expect($("#modal_2")).toHaveClass("modal");
+      return it("should add a 'lm-modal' class to the modal box", function() {
+        expect($("#modal_1")).toHaveClass("lm-modal");
+        return expect($("#modal_2")).toHaveClass("lm-modal");
       });
     });
     describe("Showing", function() {
       beforeEach(function() {
         $("#modal_trigger_1").lightModal('show');
-        return $('.modal').stop();
+        return $('.lm-modal').stop();
       });
       afterEach(function() {
         return $("#modal_trigger_1").lightModal('hide');
@@ -51,8 +51,8 @@
         return expect($("#modal_2")).toBeHidden();
       });
       it("should have an overlay", function() {
-        expect($(".light-modal-overlay")).toBeVisible();
-        return expect($(".light-modal-overlay").size()).toEqual(1);
+        expect($(".lm-overlay")).toBeVisible();
+        return expect($(".lm-overlay").size()).toEqual(1);
       });
       return it("should execute the onShow function", function() {
         $("#modal_trigger_2").lightModal('show');
@@ -66,7 +66,7 @@
         $("#modal_trigger_1").lightModal('hide');
         $("#modal_trigger_2").lightModal('show');
         $("#modal_trigger_2").lightModal('hide');
-        return $('.modal').stop();
+        return $('.lm-modal').stop();
       });
       it("should hide the modal", function() {
         waits(500);
@@ -75,7 +75,7 @@
         });
       });
       it("should hide the overlay", function() {
-        return expect($(".light-modal-overlay").size()).toEqual(0);
+        return expect($(".lm-overlay").size()).toEqual(0);
       });
       return it("should execute the onHide function", function() {
         return expect($('#modal2_status').text()).toEqual('hidden');
@@ -86,11 +86,11 @@
   it("shows the edit input field", function() {
     return it("should hide the modal and overlay when the overlay is clicked", function() {
       $("#modal_trigger_1").lightModal('show');
-      $(".light-modal-overlay").click();
+      $(".lm-overlay").click();
       waits(500);
       return runs(function() {
         expect($("#modal_1")).toBeHidden();
-        return expect($(".light-modal-overlay").size()).toEqual(0);
+        return expect($(".lm-overlay").size()).toEqual(0);
       });
     });
   });

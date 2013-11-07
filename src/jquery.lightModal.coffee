@@ -38,7 +38,7 @@
           padding: 36 # Padding
           topMargin: 18 # Margin at the top
           overlayDisable: false # Hides the modal box when the overlay (background) is clicked
-          overlayHtml: '<div class="light-modal-overlay"></div>'
+          overlayHtml: '<div class="lm-overlay"></div>'
           onShow: ->
             # Function that gets called on show
           onHide: ->
@@ -54,14 +54,14 @@
           # Init the modal element
           @$modalContainer = $(@options.modalContainer)
           @$modalContainer.hide()
-          @$modalContainer.addClass('modal')
+          @$modalContainer.addClass('lm-modal')
           if @options.width != 'auto'
             @$modalContainer.width(@options.width)
 
           @modalWidth = @$modalContainer.width()
 
           @$overlay = $(@options.overlayHtml)
-          @$closeButton = $('<a>').text('Close').addClass('light-modal-close')
+          @$closeButton = $('<a>').text('Close').addClass('lm-close')
 
           #Bind a click listener to the element
           $this.click (e) ->

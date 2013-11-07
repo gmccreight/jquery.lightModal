@@ -21,20 +21,20 @@
             padding: 36,
             topMargin: 18,
             overlayDisable: false,
-            overlayHtml: '<div class="light-modal-overlay"></div>',
+            overlayHtml: '<div class="lm-overlay"></div>',
             onShow: function() {},
             onHide: function() {}
           }, $this.data('lightModal') || {}, options || {});
           if (!data) {
             this.$modalContainer = $(this.options.modalContainer);
             this.$modalContainer.hide();
-            this.$modalContainer.addClass('modal');
+            this.$modalContainer.addClass('lm-modal');
             if (this.options.width !== 'auto') {
               this.$modalContainer.width(this.options.width);
             }
             this.modalWidth = this.$modalContainer.width();
             this.$overlay = $(this.options.overlayHtml);
-            this.$closeButton = $('<a>').text('Close').addClass('light-modal-close');
+            this.$closeButton = $('<a>').text('Close').addClass('lm-close');
             return $this.click(function(e) {
               e.preventDefault();
               return $(this).lightModal('show');

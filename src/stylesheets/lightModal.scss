@@ -1,9 +1,6 @@
 @import 'bourbon';
-// MODALS
-// ------
 
-
-.modal {
+.lm-modal {
   position: absolute;
   z-index: 11000;
   background-color: #fff;
@@ -12,7 +9,7 @@
   width: 400px;
 }
 
-.light-modal-close {
+.lm-close {
   position: absolute;
   top: 18px;
   right: 18px;
@@ -27,9 +24,10 @@
   &:hover {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIRJREFUeNqcktsNwCAIRaHx3w06gyPZyXSjOkMXadGoaQmShpugJHgMLwDSvYMnO8kSLFRj%2FY0HBt3d0gIa8QZjdSgW2NuMFxwDoiuyeHH1EMBIwPSFzAsqv67UssF3HT%2FgWYLWBG6fpm1glDlVe3MUKCvjyE6YIV8ACQ7mlQPrkj8CDAAWrWnHZ9nsgwAAAABJRU5ErkJggg%3D%3D);
   }
+
 }
 
-.light-modal-overlay{
+.lm-overlay {
   position: fixed;
   z-index: 10000;
   top: 0;
