@@ -9,8 +9,11 @@ describe "Light Modal box plugin", ->
         values.push $(this).val()
     values
 
-  # Set up the fixture path
-  jasmine.getFixtures().fixturesPath = "spec/fixtures/"
+  path = ''
+  if typeof(window.__karma__) != 'undefined'
+    path += 'base/'
+
+  jasmine.getFixtures().fixturesPath = path + 'spec/fixtures'
 
   beforeEach ->
     loadFixtures "modals.html"
@@ -70,12 +73,10 @@ describe "Light Modal box plugin", ->
     it "should execute the onHide function", ->
       expect($('#modal2_status').text()).toEqual('hidden')
 
-it "shows the edit input field", ->
-
-    it "should hide the modal and overlay when the overlay is clicked", ->
-      $("#modal_trigger_1").lightModal 'show'
-      $(".light-modal-overlay").click()
-      waits 500
-      runs ->
-        expect($("#modal_1")).toBeHidden()
-        expect($(".light-modal-overlay").size()).toEqual(0)
+    # it "should hide the modal and overlay when the overlay is clicked", ->
+    #   $("#modal_trigger_1").lightModal 'show'
+    #   $(".light-modal-overlay").click()
+    #   waits 500
+    #   runs ->
+    #     expect($("#modal_1")).toBeHidden()
+    #     expect($(".light-modal-overlay").size()).toEqual(0)
