@@ -1,18 +1,10 @@
-# LightModal is a a simple and lightweight lighbox/modal plugin. Made for use with 
-# inline content.
+# LightModal is a a simple and lightweight lighbox/modal plugin. Made for use
+# with inline content.
 #
 # Usage
 # ==================
 # $('.your-button').lightModal({
 #  modalContainer: "#some_container"
-# })
-# LightModal is a a simple and lightweight lighbox/modal plugin. Made for use with 
-# inline content.
-#
-# Usage
-# ==================
-# $('.your-button').lightModal({
-#  modalContainer: '#some_container'
 # })
 
 (($) ->
