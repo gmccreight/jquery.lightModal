@@ -66,7 +66,7 @@
         return $('.lm-modal').stop();
       });
       it("should hide the modal", function() {
-        waits(500);
+        waits(200);
         return runs(function() {
           return expect($("#modal_1")).toBeHidden();
         });
@@ -77,16 +77,31 @@
       it("should execute the onHide function", function() {
         return expect($('#modal2_status').text()).toEqual('hidden');
       });
-      return it("should hide the modal and overlay when the overlay is clicked", function() {
+      it("should hide the modal and overlay when the overlay is clicked", function() {
+        $("#modal_trigger_1").lightModal('show');
+        waits(200);
+        return runs(function() {
+          $(".lm-overlay").click();
+          waits(200);
+          return runs(function() {
+            expect($("#modal_1")).toBeHidden();
+            return expect($(".lm-overlay").size()).toEqual(0);
+          });
+        });
+      });
+      return it("should not hide if overlay click should not dismiss", function() {
         $("#modal_trigger_1").lightModal({
-          overlayClickDismisses: true
+          overlayClickDismisses: false
         });
         $("#modal_trigger_1").lightModal('show');
-        $(".lm-overlay").click();
-        waits(1000);
+        waits(200);
         return runs(function() {
-          expect($("#modal_1")).toBeHidden();
-          return expect($(".lm-overlay").size()).toEqual(0);
+          $(".lm-overlay").click();
+          waits(200);
+          return runs(function() {
+            expect($("#modal_1")).toBeVisible();
+            return expect($(".lm-overlay").size()).toEqual(1);
+          });
         });
       });
     });

@@ -57,7 +57,7 @@ describe "Light Modal box plugin", ->
       $('.lm-modal').stop()
 
     it "should hide the modal", ->
-      waits 500
+      waits 200
       runs ->
         expect($("#modal_1")).toBeHidden()
     
@@ -68,10 +68,22 @@ describe "Light Modal box plugin", ->
       expect($('#modal2_status').text()).toEqual('hidden')
 
     it "should hide the modal and overlay when the overlay is clicked", ->
-      $("#modal_trigger_1").lightModal({overlayClickDismisses:true})
       $("#modal_trigger_1").lightModal 'show'
-      $(".lm-overlay").click()
-      waits 1000
+      waits 200
       runs ->
-        expect($("#modal_1")).toBeHidden()
-        expect($(".lm-overlay").size()).toEqual(0)
+        $(".lm-overlay").click()
+        waits 200
+        runs ->
+          expect($("#modal_1")).toBeHidden()
+          expect($(".lm-overlay").size()).toEqual(0)
+
+    it "should not hide if overlay click should not dismiss", ->
+      $("#modal_trigger_1").lightModal({overlayClickDismisses:false})
+      $("#modal_trigger_1").lightModal 'show'
+      waits 200
+      runs ->
+        $(".lm-overlay").click()
+        waits 200
+        runs ->
+          expect($("#modal_1")).toBeVisible()
+          expect($(".lm-overlay").size()).toEqual(1)
