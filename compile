@@ -2,3 +2,8 @@
 
 sass --load-path="src/stylesheets" src/stylesheets/lightModal.scss ./lightModal/lightModal.css
 coffee -c -o lightModal src/jquery.lightModal.coffee
+
+$(
+cd spec
+coffee -c jquery.lightModal_spec.coffee SpecHelper.coffee
+)
