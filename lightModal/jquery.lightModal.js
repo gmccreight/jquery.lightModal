@@ -5,8 +5,7 @@
     methods = {
       init: function(options) {
         return this.each(function() {
-          var $this, data, modalContainer, self;
-          self = this;
+          var $this, data, modalContainer;
           $this = $(this);
           data = $this.data('lightModal');
           if ($this.attr('href')) {
@@ -29,11 +28,11 @@
           if (!data) {
             this.$modalContainer = $(this.options.modalContainer);
             this.$modalContainer.hide();
-            this.$modalContainer.addClass('lm-modal');
+            this.$modalContainer.addClass('lm-modal-container');
             if (this.options.width !== 'auto') {
               this.$modalContainer.width(this.options.width);
             }
-            this.modalWidth = this.$modalContainer.width();
+            this.modalContainerWidth = this.$modalContainer.width();
             this.$overlay = $(this.options.overlayHtml);
             this.$closeButton = $('<a>').text('Close').addClass('lm-close');
             return $this.click(function(e) {
@@ -58,8 +57,8 @@
           var $this,
             _this = this;
           $this = $(this);
-          this.$modalContainer.width(this.modalWidth - (this.options.padding * 2));
-          this.$modalContainer.css('left', ($(window).width() - this.modalWidth) / 2 + 'px');
+          this.$modalContainer.width(this.modalContainerWidth - (this.options.padding * 2));
+          this.$modalContainer.css('left', ($(window).width() - this.modalContainerWidth) / 2 + 'px');
           this.$modalContainer.css('top', $(window).scrollTop() + this.options.topMargin + 'px');
           this.$modalContainer.css('padding', this.options.padding + 'px');
           if (!this.options.closeButtonDisable) {

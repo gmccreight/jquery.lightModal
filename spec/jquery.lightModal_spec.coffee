@@ -21,15 +21,15 @@ describe "Light Modal box plugin", ->
       expect($("#modal_1")).toBeHidden()
       expect($("#modal_2")).toBeHidden()
     
-    it "should add a 'lm-modal' class to the modal box", ->
-      expect($("#modal_1")).toHaveClass "lm-modal"
-      expect($("#modal_2")).toHaveClass "lm-modal"
+    it "should add a 'lm-modal-container' class to the modal box", ->
+      expect($("#modal_1")).toHaveClass "lm-modal-container"
+      expect($("#modal_2")).toHaveClass "lm-modal-container"
 
   describe "Showing", ->
 
     beforeEach ->
       $("#modal_trigger_1").lightModal 'show'
-      $('.lm-modal').stop()
+      $('.lm-modal-container').stop()
 
     afterEach ->
       $("#modal_trigger_1").lightModal 'hide'
@@ -54,7 +54,7 @@ describe "Light Modal box plugin", ->
       $("#modal_trigger_1").lightModal 'hide'
       $("#modal_trigger_2").lightModal 'show'
       $("#modal_trigger_2").lightModal 'hide'
-      $('.lm-modal').stop()
+      $('.lm-modal-container').stop()
 
     it "should hide the modal", ->
       waits 200

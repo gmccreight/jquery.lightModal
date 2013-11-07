@@ -30,15 +30,15 @@
         expect($("#modal_1")).toBeHidden();
         return expect($("#modal_2")).toBeHidden();
       });
-      return it("should add a 'lm-modal' class to the modal box", function() {
-        expect($("#modal_1")).toHaveClass("lm-modal");
-        return expect($("#modal_2")).toHaveClass("lm-modal");
+      return it("should add a 'lm-modal-container' class to the modal box", function() {
+        expect($("#modal_1")).toHaveClass("lm-modal-container");
+        return expect($("#modal_2")).toHaveClass("lm-modal-container");
       });
     });
     describe("Showing", function() {
       beforeEach(function() {
         $("#modal_trigger_1").lightModal('show');
-        return $('.lm-modal').stop();
+        return $('.lm-modal-container').stop();
       });
       afterEach(function() {
         return $("#modal_trigger_1").lightModal('hide');
@@ -63,7 +63,7 @@
         $("#modal_trigger_1").lightModal('hide');
         $("#modal_trigger_2").lightModal('show');
         $("#modal_trigger_2").lightModal('hide');
-        return $('.lm-modal').stop();
+        return $('.lm-modal-container').stop();
       });
       it("should hide the modal", function() {
         waits(200);

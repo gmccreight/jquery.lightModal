@@ -9,10 +9,9 @@
 
 (($) ->
   methods =
-    # Initialise the modal box
+
     init: (options) ->
       @each ->
-        self = this
         $this = $(this)
         data = $this.data('lightModal')
 
@@ -22,13 +21,12 @@
         else
           modalContainer = '#some_container'
 
-
         @options = $.extend(
           modalContainer: modalContainer
           width: 'auto'
           closeButtonDisable: false
-          padding: 36 # Padding
-          topMargin: 18 # Margin at the top
+          padding: 36
+          topMargin: 18
           overlayClickDismisses: true
           slideSpeed: 400
           overlayHtml: '<div class="lm-overlay"></div>'
@@ -41,17 +39,17 @@
         )
 
         unless data
-          #data is empty, this is a new instance
-          # Initialise the virgin plugin elements here
+          # data is empty, this is a new instance
+          # Initialize the virgin plugin elements here
 
           # Init the modal element
           @$modalContainer = $(@options.modalContainer)
           @$modalContainer.hide()
-          @$modalContainer.addClass('lm-modal')
+          @$modalContainer.addClass('lm-modal-container')
           if @options.width != 'auto'
             @$modalContainer.width(@options.width)
 
-          @modalWidth = @$modalContainer.width()
+          @modalContainerWidth = @$modalContainer.width()
 
           @$overlay = $(@options.overlayHtml)
           @$closeButton = $('<a>').text('Close').addClass('lm-close')
@@ -64,7 +62,7 @@
     destroy: ->
       @each ->
         $this = $(this)
-        data = $this.data('lightModal')
+        data = $this.data 'lightModal'
         $(window).unbind '.lightModal'
         data.lightModal.remove()
         $this.removeData 'lightModal'
@@ -75,8 +73,8 @@
         $this = $(this)
 
         # Set up the dimentions and position on the page
-        @$modalContainer.width @modalWidth - (@options.padding * 2)
-        @$modalContainer.css 'left', ($(window).width() - @modalWidth)/2 + 'px'
+        @$modalContainer.width @modalContainerWidth - (@options.padding * 2)
+        @$modalContainer.css 'left', ($(window).width() - @modalContainerWidth)/2 + 'px'
         @$modalContainer.css 'top', $(window).scrollTop() + @options.topMargin + 'px'
         @$modalContainer.css 'padding', @options.padding + 'px'
 
@@ -91,7 +89,6 @@
         @$overlay.appendTo('body').click (e) =>
           e.preventDefault()
           if @options.overlayClickDismisses
-            # only allow hiding the modal when overlay is clicked if 'overLayDisable is true'
             $this.lightModal('hide')
         
         $(document).bind 'keyup.lightModal', (e) ->
