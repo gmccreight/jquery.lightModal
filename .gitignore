@@ -10,4 +10,4 @@ nbproject
 .idea/
 *.psd
 .sass-cache/
-
+.DS_Store
