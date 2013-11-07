@@ -29,7 +29,8 @@
           closeButtonDisable: false
           padding: 36 # Padding
           topMargin: 18 # Margin at the top
-          overlayDisable: false # Hides the modal box when the overlay (background) is clicked
+          overlayClickDismisses: true
+          slideSpeed: 400
           overlayHtml: '<div class="lm-overlay"></div>'
           onShow: ->
             # Function that gets called on show
@@ -89,21 +90,21 @@
         # Add an overlay to the page
         @$overlay.appendTo('body').click (e) =>
           e.preventDefault()
-          if @options.overlayDisable
+          if @options.overlayClickDismisses
             # only allow hiding the modal when overlay is clicked if 'overLayDisable is true'
             $this.lightModal('hide')
         
         $(document).bind 'keyup.lightModal', (e) ->
           $this.lightModal('hide') if (e.keyCode == 27)
 
-        @$modalContainer.slideDown()
+        @$modalContainer.slideDown(@options.slideSpeed)
         @options.onShow()
     
     # Hide/close the modal box
     hide: ->
       @each ->
         $this = $(this)
-        @$modalContainer.slideUp()
+        @$modalContainer.slideUp(@options.slideSpeed)
         @$overlay.remove()
         @$closeButton.remove()
         $(document).unbind 'keyup.lightModal'

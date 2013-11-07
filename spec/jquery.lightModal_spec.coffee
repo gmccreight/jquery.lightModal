@@ -1,23 +1,14 @@
+path = ''
+if typeof(window.__karma__) != 'undefined'
+  path += 'base/'
+
+jasmine.getFixtures().fixturesPath = path + 'spec/fixtures'
+
 describe "Light Modal box plugin", ->
-  putOptionValuesIntoArray = ($options, getText) ->
-    values = []
-    if getText == true
-      $options.each ->
-        values.push $(this).text()
-    else
-      $options.each ->
-        values.push $(this).val()
-    values
-
-  path = ''
-  if typeof(window.__karma__) != 'undefined'
-    path += 'base/'
-
-  jasmine.getFixtures().fixturesPath = path + 'spec/fixtures'
 
   beforeEach ->
     loadFixtures "modals.html"
-    $("#modal_trigger_1").lightModal()
+    $("#modal_trigger_1").lightModal({slideSpeed:100})
     $("#modal_trigger_2").lightModal
       onShow: ->
         $('#modal2_status').text('showing')
@@ -25,6 +16,7 @@ describe "Light Modal box plugin", ->
         $('#modal2_status').text('hidden')
   
   describe "Initialisation", ->
+
     it "should hide the modal", ->
       expect($("#modal_1")).toBeHidden()
       expect($("#modal_2")).toBeHidden()
@@ -34,6 +26,7 @@ describe "Light Modal box plugin", ->
       expect($("#modal_2")).toHaveClass "lm-modal"
 
   describe "Showing", ->
+
     beforeEach ->
       $("#modal_trigger_1").lightModal 'show'
       $('.lm-modal').stop()
@@ -55,6 +48,7 @@ describe "Light Modal box plugin", ->
       $("#modal_trigger_2").lightModal 'hide'
 
   describe "Hiding", ->
+
     beforeEach ->
       $("#modal_trigger_1").lightModal 'show'
       $("#modal_trigger_1").lightModal 'hide'
@@ -73,10 +67,11 @@ describe "Light Modal box plugin", ->
     it "should execute the onHide function", ->
       expect($('#modal2_status').text()).toEqual('hidden')
 
-    # it "should hide the modal and overlay when the overlay is clicked", ->
-    #   $("#modal_trigger_1").lightModal 'show'
-    #   $(".lm-overlay").click()
-    #   waits 500
-    #   runs ->
-    #     expect($("#modal_1")).toBeHidden()
-    #     expect($(".lm-overlay").size()).toEqual(0)
+    it "should hide the modal and overlay when the overlay is clicked", ->
+      $("#modal_trigger_1").lightModal({overlayClickDismisses:true})
+      $("#modal_trigger_1").lightModal 'show'
+      $(".lm-overlay").click()
+      waits 1000
+      runs ->
+        expect($("#modal_1")).toBeHidden()
+        expect($(".lm-overlay").size()).toEqual(0)

@@ -20,7 +20,8 @@
             closeButtonDisable: false,
             padding: 36,
             topMargin: 18,
-            overlayDisable: false,
+            overlayClickDismisses: true,
+            slideSpeed: 400,
             overlayHtml: '<div class="lm-overlay"></div>',
             onShow: function() {},
             onHide: function() {}
@@ -70,7 +71,7 @@
           }
           this.$overlay.appendTo('body').click(function(e) {
             e.preventDefault();
-            if (_this.options.overlayDisable) {
+            if (_this.options.overlayClickDismisses) {
               return $this.lightModal('hide');
             }
           });
@@ -79,7 +80,7 @@
               return $this.lightModal('hide');
             }
           });
-          this.$modalContainer.slideDown();
+          this.$modalContainer.slideDown(this.options.slideSpeed);
           return this.options.onShow();
         });
       },
@@ -87,7 +88,7 @@
         return this.each(function() {
           var $this;
           $this = $(this);
-          this.$modalContainer.slideUp();
+          this.$modalContainer.slideUp(this.options.slideSpeed);
           this.$overlay.remove();
           this.$closeButton.remove();
           $(document).unbind('keyup.lightModal');
