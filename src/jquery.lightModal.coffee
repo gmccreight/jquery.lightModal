@@ -14,8 +14,9 @@
 # $('.your-button').lightModal({
 #  modalContainer: '#some_container'
 # })
+
 (($) ->
-  methods = 
+  methods =
     # Initialise the modal box
     init: (options) ->
       @each ->
